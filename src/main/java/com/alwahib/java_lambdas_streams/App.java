@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.function.IntBinaryOperator;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -49,11 +50,21 @@ public class App {
 	    shoppingList.add("pasta");
 	    
 	    System.out.println("======> ShoppingList: ");
-	    shoppingList.stream().map(s -> s.toUpperCase())
+	    Stream<String> shoppingListStream = shoppingList.stream();
+	    shoppingListStream.map(s -> s.toUpperCase())
 	    	.filter(s -> !s.startsWith("C") )
 	    	.sorted()
 	    	//.forEach(t -> System.out.println(t));
 	    	.forEach(System.out::println);
+	    
+	    System.out.println(shoppingList);
+	    
+	    List<String> sortedShoppingList = shoppingList.stream()
+	    		.map(s -> s.toUpperCase())
+	    		.filter(s -> !s.startsWith("C") )
+	    		.sorted()
+		    	.collect(Collectors.toList());
+	    System.out.println(sortedShoppingList);
 	    
 	    System.out.println("======> Scores: ");
 	    Arrays.asList(scores).stream()
