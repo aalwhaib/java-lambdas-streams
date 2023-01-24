@@ -4,64 +4,62 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-
-
 class EmployeeTest {
 
-  private EmployeeUtils employeeUtils = new EmployeeUtils();
+	private EmployeeUtils employeeUtils = new EmployeeUtils();
 
-  @Test
-  void employeeFullName() {
-    Employee employee = new Employee();
-    employee.setFirstName("Jerome");
-    employee.setLastName("Donaldson");
+	@Test
+	void employeeFullName() {
+		Employee employee = new Employee();
+		employee.setFirstName("Jerome");
+		employee.setLastName("Donaldson");
 
-    String actual = employeeUtils.getFullName(employee);
+		String actual = employeeUtils.getFullName(employee);
 
-    assertThat(actual).isEqualTo("Jerome Donaldson");
-  }
+		assertThat(actual).isEqualTo("Jerome Donaldson");
+	}
 
-  @Test
-  void employeeManagersLastName() {
-    Employee employee1 = new Employee();
-    Employee employee2 = new Employee();
-    employee2.setLastName("Westbay");
-    employee1.setManager(employee2);
+	@Test
+	void employeeManagersLastName() {
+		Employee employee1 = new Employee();
+		Employee employee2 = new Employee();
+		employee2.setLastName("Westbay");
+		employee1.setManager(employee2);
 
-    String actual = employeeUtils.getManagersLastName(employee1);
+		String actual = employeeUtils.getManagersLastName(employee1);
 
-    assertThat(actual).isEqualTo("Westbay");
-  }
+		assertThat(actual).isEqualTo("Westbay");
+	}
 
-  @Test
-  void employeeInEmploymentLongerThanFiveYears() {
-    Employee employee = new Employee();
-    employee.setYearsOfService(20);
+	@Test
+	void employeeInEmploymentLongerThanFiveYears() {
+		Employee employee = new Employee();
+		employee.setYearsOfService(20);
 
-    Boolean actual = employeeUtils.hasBeenEmployedLongerThanFiveYears(employee);
+		Boolean actual = employeeUtils.hasBeenEmployedLongerThanFiveYears(employee);
 
-    assertThat(actual).isTrue();
-  }
+		assertThat(actual).isTrue();
+	}
 
-  @Test
-  void employeeHasMoreThanThreeDirectReports() {
-    Employee employee = new Employee();
-    employee.setNumberOfDirectReports(5);
+	@Test
+	void employeeHasMoreThanThreeDirectReports() {
+		Employee employee = new Employee();
+		employee.setNumberOfDirectReports(5);
 
-    Boolean actual = employeeUtils.hasMoreThanThreeDirectReports(employee);
+		Boolean actual = employeeUtils.hasMoreThanThreeDirectReports(employee);
 
-    assertThat(actual).isTrue();
-  }
+		assertThat(actual).isTrue();
+	}
 
-  @Test
-  void employeeHasMoreThanThreeYearsOfServiceAndLessThanTwoDirectReports() {
-    Employee employee = new Employee();
-    employee.setYearsOfService(5);
-    employee.setNumberOfDirectReports(1);
+	@Test
+	void employeeHasMoreThanThreeYearsOfServiceAndLessThanTwoDirectReports() {
+		Employee employee = new Employee();
+		employee.setYearsOfService(5);
+		employee.setNumberOfDirectReports(1);
 
-    Boolean actual = employeeUtils.hasMoreThanThreeYearsOfServiceAndLessThanTwoDirectReports(employee);
+		Boolean actual = employeeUtils.hasMoreThanThreeYearsOfServiceAndLessThanTwoDirectReports(employee);
 
-    assertThat(actual).isTrue();
-  }
+		assertThat(actual).isTrue();
+	}
 
 }
