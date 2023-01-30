@@ -4,9 +4,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.IntBinaryOperator;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import com.alwahib.java_lambdas_streams.emp.Employee;
 
 /**
  * Hello world!
@@ -59,9 +64,12 @@ public class App {
 	    
 	    System.out.println(shoppingList);
 	    
+	    Predicate<String> notStartWithC = s -> !s.startsWith("C");
+	    Function<String, String> toUpperCase = s -> s.toUpperCase();
+	    
 	    List<String> sortedShoppingList = shoppingList.stream()
-	    		.map(s -> s.toUpperCase())
-	    		.filter(s -> !s.startsWith("C") )
+	    		.map(toUpperCase)
+	    		.filter(notStartWithC)
 	    		.sorted()
 		    	.collect(Collectors.toList());
 	    System.out.println(sortedShoppingList);
@@ -74,5 +82,6 @@ public class App {
 	    System.out.println("======> Names: ");
 	    Stream<String> names = Stream.of("Ahmed", "Test");
 	    names.forEach(System.out::println);
+	    
 	}
 }
